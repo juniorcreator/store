@@ -40,12 +40,13 @@
                             label="Price product"
                             type="text">
                     </v-text-field>
-                    <v-text-field
+                    <v-textarea
                             v-model="description"
                             name="description"
                             label="Description product"
                             type="text">
-                    </v-text-field>
+                        multi-line
+                    ></v-textarea>
                 </v-form>
                 <v-layout class="mb-3">
                     <v-flex xs12>
@@ -100,7 +101,18 @@
     },
       methods: {
           createProduct() {
-
+              if(this.$refs.form.validate()) {
+                  const product = {
+                      title: this.title,
+                      vendor: this.vendor,
+                      color: this.color,
+                      material: this.material,
+                      price: this.price,
+                      promo: this.promo,
+                      description: this.description
+                  }
+                  console.log(product);
+              }
           },
       }
   }
